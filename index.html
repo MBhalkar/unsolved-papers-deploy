@@ -41,11 +41,16 @@
     button:hover{
       cursor: pointer;
     }
+    .tagLine{
+      font-style: italic;
+      font-size: medium;
+      color: gray;
+    }
   </style>
 </head>
 <body mv-app="unsolved-papers" mv-storage="https://github.com/MBhalkar/unsolved-papers/blob/main/data" mv-plugins="tinymce">
     <h1 id="title">UnsolvedPapers.com</h1>
-    <div id="content" contenteditable="true">
+    <div id="content" contenteditable="true" class="tagLine">
         <i>Find answers to academic questions</i>
     </div>
     <form action="/" method="post" enctype="multipart/form-data">
@@ -58,7 +63,7 @@
         <div class="multiline answer" id="answer" contenteditable="true" aria-placeholder="Write the answer" aria-multiline="true" aria-rowspan="5" aria-colspan="40"></div>
       </p>  
       <p>
-        <button id="submit-answer" type="button">Save Answer</button>
+        <button id="submit-answer" type="button">Submit Answer</button>
       </p>
     </form>
     <span id="showQuestion" aria-hidden="true"></span><br>
