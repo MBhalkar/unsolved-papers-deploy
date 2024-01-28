@@ -1,4 +1,4 @@
-import {LitElement, html, css} from 'lit';
+import {LitElement, html, css} from 'https://jspm.dev/lit-element@2';
 
 export class HeaderTagElement extends LitElement{
     static properties = {
