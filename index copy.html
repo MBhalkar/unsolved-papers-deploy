@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UnsolvedPapers.com|Unsolved Papers</title>
+  <meta name="description" content="Find answers to academic questions.">
+  <link rel="stylesheet" href="./styles/default.css">
+</head>
+<body mv-app="unsolved-papers" mv-storage="https://github.com/MBhalkar/unsolved-papers/blob/main/data" mv-plugins="tinymce">
+    <h1 id="title">UnsolvedPapers.com</h1>
+    <div id="content" contenteditable="true" class="tagLine">
+        <i>Find answers to academic questions</i>
+    </div>
+    <form action="/" method="post" enctype="multipart/form-data">
+      <p>
+        <label for="question">Question</label>
+        <div class="multiline" id="question" contenteditable="true" aria-placeholder="Write the question" aria-multiline="true" aria-rowspan="2" aria-colspan="40"></div>
+      </p>
+      <p>
+        <label for="answer">Answer</label>
+        <div class="multiline answer" id="answer" contenteditable="true" aria-placeholder="Write the answer" aria-multiline="true" aria-rowspan="5" aria-colspan="40"></div>
+      </p>  
+      <p>
+        <button id="submit-answer" type="button">Submit Answer</button>
+      </p>
+    </form>
+    <span id="showQuestion" aria-hidden="true"></span><br>
+    <span id="showAnswer" aria-hidden="true"></span>
+
+    <script type="text/javascript">
+      let question = document.querySelector('#question');
+      question.focus();
+      let answer = document.querySelector('#answer');
+      let showQuestion = document.querySelector('#showQuestion');
+      let showAnswer = document.querySelector('#showAnswer');
+      let hiddenFields = document.querySelectorAll('[aria-hidden="true"]');
+      
+      let submitAnswer = document.querySelector('#submit-answer');
+      submitAnswer.addEventListener('click', function(event){
+        for(let field of hiddenFields) {
+          field.ariaHidden  = 'false';
+        }
+
+        showQuestion.innerHTML = question.innerHTML; 
+        showAnswer.innerHTML = answer.innerHTML;
+
+      });
+
+    </script>
+</body>
+</html>

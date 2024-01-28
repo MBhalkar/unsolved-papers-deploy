@@ -1,0 +1,36 @@
+body{
+    font-family: 'Heebo', sans-serif,'Franklin Gothic Medium', 'Arial Narrow', Arial;
+    font-size: medium;
+  }
+  input, label {
+    display: block;
+    width: 100%;
+    font-weight: bold;
+  }
+
+  .multiline{
+    scroll-behavior: smooth;
+    background-color: rgb(228, 228, 228);
+    color: black;
+    padding: 1em;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    outline: none;
+    font-family: 'Heebo', sans-serif;
+    font-size: 16px;
+  }
+  .answer{
+    height: 4em;
+  }
+  button{
+    background-color: rgb(100, 43, 243);
+    color: white;
+    border: 0px solid gray;
+    border-radius: 10px;
+    height: 3em;
+
+  }
+  button:hover{
+    cursor: pointer;
+  }
+  

@@ -1,93 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>UnsolvedPapers.com|Unsolved Papers</title>
-  <meta name="description" content="Find answers to academic questions.">
-  <style>
-    body{
-      font-family: 'Heebo', sans-serif,'Franklin Gothic Medium', 'Arial Narrow', Arial;
-      font-size: medium;
-    }
-    input, label {
-      display: block;
-      width: 100%;
-      font-weight: bold;
-    }
+  <head>
+    <script type="module" src="./scripts/header.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./styles/default.css">
+  </head>
 
-    .multiline{
-      scroll-behavior: smooth;
-      background-color: rgb(228, 228, 228);
-      color: black;
-      padding: 1em;
-      border-radius: 10px;
-      border: 1px solid transparent;
-      outline: none;
-      font-family: 'Heebo', sans-serif;
-      font-size: 16px;
-    }
-    .answer{
-      height: 4em;
-    }
-    button{
-      background-color: rgb(100, 43, 243);
-      color: white;
-      border: 0px solid gray;
-      border-radius: 10px;
-      height: 3em;
+  <body mv-app="unsolved-papers" mv-storage="https://github.com/MBhalkar/unsolved-papers/blob/main/data" mv-plugins="tinymce">
+      <header-tag-element></header-tag-element>
+      <form action="/" method="post" enctype="multipart/form-data">
+        <p>
+          <label for="question">Question</label>
+          <div class="multiline" id="question" contenteditable="true" aria-placeholder="Write the question" aria-multiline="true" aria-rowspan="2" aria-colspan="40"></div>
+        </p>
+        <p>
+          <label for="answer">Answer</label>
+          <div class="multiline answer" id="answer" contenteditable="true" aria-placeholder="Write the answer" aria-multiline="true" aria-rowspan="5" aria-colspan="40"></div>
+        </p>  
+        <p>
+          <button id="submit-answer" type="button">Submit Answer</button>
+        </p>
+      </form>
+      <span id="showQuestion" aria-hidden="true"></span><br>
+      <span id="showAnswer" aria-hidden="true"></span>
 
-    }
-    button:hover{
-      cursor: pointer;
-    }
-    .tagLine{
-      font-style: italic;
-      font-size: medium;
-      color: gray;
-    }
-  </style>
-</head>
-<body mv-app="unsolved-papers" mv-storage="https://github.com/MBhalkar/unsolved-papers/blob/main/data" mv-plugins="tinymce">
-    <h1 id="title">UnsolvedPapers.com</h1>
-    <div id="content" contenteditable="true" class="tagLine">
-        <i>Find answers to academic questions</i>
-    </div>
-    <form action="/" method="post" enctype="multipart/form-data">
-      <p>
-        <label for="question">Question</label>
-        <div class="multiline" id="question" contenteditable="true" aria-placeholder="Write the question" aria-multiline="true" aria-rowspan="2" aria-colspan="40"></div>
-      </p>
-      <p>
-        <label for="answer">Answer</label>
-        <div class="multiline answer" id="answer" contenteditable="true" aria-placeholder="Write the answer" aria-multiline="true" aria-rowspan="5" aria-colspan="40"></div>
-      </p>  
-      <p>
-        <button id="submit-answer" type="button">Submit Answer</button>
-      </p>
-    </form>
-    <span id="showQuestion" aria-hidden="true"></span><br>
-    <span id="showAnswer" aria-hidden="true"></span>
+      <script>
+        let question = document.querySelector('#question');
+        question.focus();
+        let answer = document.querySelector('#answer');
+        let showQuestion = document.querySelector('#showQuestion');
+        let showAnswer = document.querySelector('#showAnswer');
+        let hiddenFields = document.querySelectorAll('[aria-hidden="true"]');
+        
+        let submitAnswer = document.querySelector('#submit-answer');
+        submitAnswer.addEventListener('click', function(event){
+          for(let field of hiddenFields) {
+            field.ariaHidden  = 'false';
+          }
 
-    <script type="text/javascript">
-      let question = document.querySelector('#question');
-      question.focus();
-      let answer = document.querySelector('#answer');
-      let showQuestion = document.querySelector('#showQuestion');
-      let showAnswer = document.querySelector('#showAnswer');
-      let hiddenFields = document.querySelectorAll('[aria-hidden="true"]');
-      
-      let submitAnswer = document.querySelector('#submit-answer');
-      submitAnswer.addEventListener('click', function(event){
-        for(let field of hiddenFields) {
-          field.ariaHidden  = 'false';
-        }
-
-        showQuestion.innerHTML = question.innerHTML; 
-        showAnswer.innerHTML = answer.innerHTML;
-
-      });
-
-    </script>
-</body>
+          showQuestion.innerHTML = question.innerHTML; 
+          showAnswer.innerHTML = answer.innerHTML;
+        });
+      </script>
+  </body>
 </html>
