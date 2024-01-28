@@ -1,21 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="stylesheet" href="https://get.mavo.io/mavo.css"/>
-  <script src="https://get.mavo.io/mavo.js"></script>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>UnsolvedPapers.com|Unsolved Papers</title>
   <meta name="description" content="Find answers to academic questions.">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mavo/0.2.0/mavo.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mavo/0.2.0/mavo.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tufte-css/1.7.2/tufte.min.css">
+  <style>
+    body{
+      font-family: 'Heebo', sans-serif,'Franklin Gothic Medium', 'Arial Narrow', Arial;
+      font-size: medium;
+    }
+    input, label {
+      display: block;
+      width: 100%;
+      font-weight: bold;
+    }
+
+    .multiline{
+      height: 4em;
+      scroll-behavior: smooth;
+      background-color: rgb(228, 228, 228);
+      color: black;
+      padding: 1em;
+      border-radius: 10px;
+      border: 1px solid transparent;
+      outline: none;
+      font-family: 'Heebo', sans-serif;
+      font-size: 16px;
+    }
+  </style>
 </head>
 <body mv-app="unsolved-papers" mv-storage="https://github.com/MBhalkar/unsolved-papers/blob/main/data" mv-plugins="tinymce">
-    <h1 id="title" property>UnsolvedPapers.com|Unsolved Papers</h1>
-    <div id="content" property class="tinymce">
-        Find answers to academic questions.
+    <h1 id="title">UnsolvedPapers.com|Unsolved Papers</h1>
+    <div id="content" contenteditable="true">
+        <i>Find answers to academic questions</i>
     </div>
+    <form action="/" method="post" enctype="multipart/form-data">
+      <p>
+        <label for="question">Question</label>
+        <div class="multiline" id="question" contenteditable="true" aria-placeholder="Write the question" aria-multiline="true" aria-rowspan="2" aria-colspan="40"></div>
+      </p>
+      <p>
+        <label for="answer">Answer</label>
+        <div class="multiline" id="answer" contenteditable="true" aria-placeholder="Write the answer" aria-multiline="true" aria-rowspan="5" aria-colspan="40"></div>
+      </p>  
+      <p>
+        <button id="submit-answer" type="button">Save Answer</button>
+      </p>
+    </form>
+    <span id="showQuestion" aria-hidden="true"></span><br>
+    <span id="showAnswer" aria-hidden="true"></span>
+
+    <script type="text/javascript">
+      let question = document.querySelector('#question');
+      question.focus();
+      let answer = document.querySelector('#answer');
+      let showQuestion = document.querySelector('#showQuestion');
+      let showAnswer = document.querySelector('#showAnswer');
+      let hiddenFields = document.querySelectorAll('[aria-hidden="true"]');
+      
+      let submitAnswer = document.querySelector('#submit-answer');
+      submitAnswer.addEventListener('click', function(event){
+        for(let field of hiddenFields) {
+          field.ariaHidden  = 'false';
+        }
+
+        showQuestion.innerHTML = question.innerHTML; 
+        showAnswer.innerHTML = answer.innerHTML;
+
+      });
+
+    </script>
 </body>
 </html>
