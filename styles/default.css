@@ -26,6 +26,7 @@ body{
   }
   .question{
     height: 30px;
+  }
   button{
     background-color: #049bdb;
     color: white;
@@ -36,6 +37,6 @@ body{
   }
   button:hover{
     cursor: pointer;
-    background-color: #48afdb;
+    background-color: #016f9e;
   }
   
