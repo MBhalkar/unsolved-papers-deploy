@@ -9,17 +9,22 @@ export class HeaderTagElement extends LitElement{
     }
     static get styles(){
         return css `
-            .tagLine{
+            .tagline{
                 font-style: italic;
                 font-size: medium;
-                color: silver;
+                color: silver;                
+            }
+            .prevent-select {
+                -webkit-user-select: none; /*Safari*/
+                -ms-user-select: none; /*IE 10, 11*/
+                user-select: none; /*Std syntax*/
             }
         `;
     }    
     render() {
         return html`
             <h1 id="title">UnsolvedPapers.com</h1>
-            <div id="content" contenteditable="true" class="tagLine">
+            <div id="content" class="tagline prevent-select">
                 <i>Find answers to academic questions</i>
             </div>
         `;
