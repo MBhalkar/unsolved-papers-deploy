@@ -13,12 +13,12 @@ body{
     color: black;
     padding: 1em;
     border-radius: 10px;
-    border: 1px solid transparent;
+    border: 1px solid silver;
     outline: none;
     font-size: 16px;
   }
   .multiline:focus {
-    border: 1px solid transparent;
+    border: 1px solid silver;
     outline: none;
   }
   .answer, .question{
@@ -34,6 +34,6 @@ body{
   }
   button:hover{
     cursor: pointer;
-    background-color: #049bdb7d;
+    background-color: #48afdb;
   }
   
