@@ -12,7 +12,7 @@ export class HeaderTagElement extends LitElement{
             .tagLine{
                 font-style: italic;
                 font-size: medium;
-                color: gray;
+                color: silver;
             }
         `;
     }    
