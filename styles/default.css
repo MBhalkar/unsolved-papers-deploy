@@ -21,9 +21,11 @@ body{
     border: 1px solid silver;
     outline: none;
   }
-  .answer, .question{
+  .answer{
     height: 50px;
   }
+  .question{
+    height: 30px;
   button{
     background-color: #049bdb;
     color: white;
